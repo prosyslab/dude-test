@@ -7,7 +7,7 @@ open Cohttp
 open Cohttp_lwt_unix
 
 let body =
-    let url_path = "https://api.github.com/repose/" ^ Sys.argv.(3) ^ Sys.argv.(4) in
+    let url_path = "https://api.github.com/repos/" ^ Sys.argv.(3) ^ Sys.argv.(4) in
         Client.get (Cohttp.Header.init_with "accept" "application/vnd.github+json") (Uri.of_string uri_path) >>= fun (resp, body) -> (* is it okay?? *)
             let code = resp |> Response.status |> Code.code_of_status in
                 Printf.printf "Response code: %d\n" code;
@@ -19,18 +19,3 @@ let body =
 let () =
     let body = Lwt_main.run body in
         print_endline ("Received body\n" ^ body)
-
-(* 
-let body =
-  Client.get (Uri.of_string "https://www.reddit.com/") >>= fun (resp, body) ->
-  let code = resp |> Response.status |> Code.code_of_status in
-  Printf.printf "Response code: %d\n" code;
-  Printf.printf "Headers: %s\n" (resp |> Response.headers |> Header.to_string);
-  body |> Cohttp_lwt.Body.to_string >|= fun body ->
-  Printf.printf "Body of length: %d\n" (String.length body);
-  body
-
-let () =
-  let body = Lwt_main.run body in
-  print_endline ("Received body\n" ^ body)   
-*)
