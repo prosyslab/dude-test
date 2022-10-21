@@ -1,9 +1,12 @@
 #!/bin/bash -l
 
-# opam init --yes --disable-sandboxing
+# opam init --yes
 # eval $(opam env)
 # opam install dune
 
-dune build ocaml_test.exe
+# eval $(opam env)
 
-dune exec ./ocaml_test.exe $1 $2 
+# dune build ocaml_test.exe
+
+opam switch
+# dune exec ./ocaml_test.exe $1 $2 
