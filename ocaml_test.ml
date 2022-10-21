@@ -7,7 +7,7 @@ open Cohttp
 open Cohttp_lwt_unix
 
 let body =
-    Client.get (Cohttp.Header.init_with "accept" "application/vnd.github+json") (Uri.of_string (Sys.argv.(3)^"/issues?state=all")) >>= fun (resp, body) -> (* is it okay?? *)
+    Client.get headers=(Cohttp.Header.init_with "accept" "application/vnd.github+json") (Uri.of_string (Sys.argv.(3)^"/issues?state=all")) >>= fun (resp, body) -> (* is it okay?? *)
         let code = resp |> Response.status |> Code.code_of_status in
             Printf.printf "Response code: %d\n" code;
             Printf.printf "Headers: %s\n" (resp |> Response.headers |> Header.to_string);
