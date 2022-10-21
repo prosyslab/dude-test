@@ -1,2 +1,3 @@
 (executable
- (name ocaml_test))
+ (name ocaml_test)
+ (libraries cohttp-lwt-unix cohttp))
