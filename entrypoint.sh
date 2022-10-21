@@ -2,7 +2,7 @@
 
 opam init --yes
 eval $(opam env)
-# opam install dune
+opam install dune
 
 # dune build ocaml_test.exe
 
