@@ -3,7 +3,7 @@
 opam init --yes
 eval $(opam env)
 opam install dune --yes
-opam install cohttp-lwt-unix --yes
+opam install cohttp-lwt-unix --yes --confirm-level=unsafe-yes
 
 # dune build ocaml_test.exe
 
