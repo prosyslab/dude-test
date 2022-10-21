@@ -7,6 +7,12 @@ inputs:
   issue_contents: # issue contents
     description: 'Contents of the issue'
     required: true
+  repository_name: # repository name
+    description: 'Name of the repository'
+    required: true
+  repository_owner: # repository owner
+    description: 'Owner of the repository'
+    required: true
 outputs:
   string: # output of string
     description: 'The contents of issue'
@@ -17,4 +23,4 @@ runs:
     - ${{ inputs.issue_num }}
     - ${{ inputs.issue_contents }}
     - ${{ inputs.repository_name }}
-    - ${{ repository_owner }}
+    - ${{ inputs.repository_owner }}
