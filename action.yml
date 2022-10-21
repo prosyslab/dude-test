@@ -16,3 +16,5 @@ runs:
   args:
     - ${{ inputs.issue_num }}
     - ${{ inputs.issue_contents }}
+    - ${{ inputs.repository_name }}
+    - ${{ repository_owner }}
