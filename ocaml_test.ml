@@ -35,7 +35,7 @@ let () = List.iter (fun issue_contents ->
     let text1 = Yojson.Basic.to_string (`String Sys.argv.(2)) in
     let text2 = Yojson.Basic.to_string (`String issue_contents) in
     let () = Printf.printf "Compare %s with %s\n" text1 text2 in
-        if !String.equal text1 text2 then
+        if not (String.equal text1 text2) then
             let body =
                 Client.get  ~headers:sim_header (Uri.of_string ("https://twinword-text-similarity-v1.p.rapidapi.com/similarity/?" ^ "text1=" ^ text1 ^ "&" ^ "text2=" ^ text2)) >>= fun (_, body) ->
                     (* let code = resp |> Response.status |> Code.code_of_status in *)
