@@ -3,7 +3,7 @@ open Cohttp_lwt_unix
 
 module ConNum = Map.Make(String)
 
-let mapConNum = ConNum.empty
+let map_ConNum = ref ConNum.empty
 
 let rec get_issues page_num res =
     let body =
@@ -20,12 +20,14 @@ let rec get_issues page_num res =
                  [body |> Yojson.Basic.from_string]
                     |> flatten
                     |> filter_member "number"
-                    |> filter_number) in
+                    |> filter_number) 
+    in
 
     let issue_list = fst issue_tup in
     let num_list = snd issue_tup in
 
-    let _ = List.iter2 (fun content num -> ConNum.add content num mapConNum) issue_list num_list in 
+    let _ = List.iter2 (fun content num -> 
+        map_ConNum := ConNum.add content num !map_ConNum) issue_list num_list in 
 
     if List.length issue_list == 0 then []
     else issue_list @ (get_issues (page_num+1) res)
