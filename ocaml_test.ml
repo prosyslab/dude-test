@@ -48,7 +48,7 @@ let () = List.iter (fun issue_contents ->
     let body = Lwt_main.run body in
         let json_body = Yojson.Basic.from_string body in
             let open Yojson.Basic.Util in
-                let cur_sim = List.hd ([json_body] |> filter_member "similarity" |> filter_number)) in
+                let cur_sim = List.hd ([json_body] |> filter_member "similarity" |> filter_number) in
                     if cur_sim > threshold_sim && cur_sim > !max_sim then
                         let _ = max_sim := cur_sim in
                         max_contents := issue_contents
