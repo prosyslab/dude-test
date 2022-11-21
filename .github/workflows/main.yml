@@ -26,5 +26,5 @@ jobs:
           repository_path_name: ${{ github.repository }}
           rapid_key: ${{ env.rapid_key }}
       # Use the output from the `ocaml_test` step
-      - name: Get the output string
-        run: echo "The output was ${{ steps.ocaml_test.outputs.string }}"
+      - name: Get the possible duplicated issue's number
+        run: echo "Possible duplication: refer to ${{ steps.ocaml_test.outputs.dup_num }}"

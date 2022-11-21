@@ -14,8 +14,8 @@ inputs:
     description: 'Key for the RapidAPI'
     required: true
 outputs:
-  string: # output of string
-    description: 'The contents of issue'
+  dup_num: # output of string
+    description: 'The number of possible duplicated issue'
 runs:
   using: 'docker'
   image: 'Dockerfile'
