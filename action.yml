@@ -1,5 +1,5 @@
-name: 'OCaml Test Action'
-description: 'Test OCaml and getting output string'
+name: 'Duplication detecting Action'
+description: 'Detecting duplications and informing the issuer'
 inputs:
   issue_num:  # issue number
     description: 'Number of the issue'
