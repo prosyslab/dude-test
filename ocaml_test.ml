@@ -20,7 +20,7 @@ let rec get_issues page_num res =
                  [body |> Yojson.Basic.from_string]
                     |> flatten
                     |> filter_member "number"
-                    |> filter_number) 
+                    |> filter_int) 
     in
 
     let issue_list = fst issue_tup in
