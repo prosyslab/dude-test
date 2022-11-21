@@ -56,4 +56,4 @@ let () = List.iter (fun issue_contents ->
                         max_contents := issue_contents
 ) (get_issues 0 [])
 
-let _ = Printf.printf "::set-output name=dup_num::%d\n" (ConNum.find !max_contents !map_ConNum)
+let _ = Sys.command ("echo \"dup_num=" ^ (Int.to_string (ConNum.find !max_contents !map_ConNum)) ^ "\" >> $GITHUB_OUTPUT")
