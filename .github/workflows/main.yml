@@ -17,7 +17,7 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-      - name: OCaml test action step
+      - name: Duplication scan
         uses: ./ # Uses an action in the root directory
         id: ocaml_test
         with:
@@ -27,4 +27,4 @@ jobs:
           rapid_key: ${{ env.rapid_key }}
       # Use the output from the `ocaml_test` step
       - name: Get the possible duplicated issue's number
-        run: echo "Possible duplication: refer to ${{ steps.ocaml_test.outputs.dup_num }}"
+        run: echo "Possible duplication found. Refer to ${{ steps.ocaml_test.outputs.dup_num }}"
