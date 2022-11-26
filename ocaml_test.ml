@@ -1,4 +1,5 @@
 open Lwt
+open Cohttp
 open Cohttp_lwt_unix
 
 module ConNum = Map.Make(String)
