@@ -27,8 +27,9 @@ let rec get_issues page_num res =
     let issue_list = fst issue_tup in
     let num_list = snd issue_tup in
 
-    let _ = List.iter2 (fun content num -> 
-        map_ConNum := ConNum.add content num !map_ConNum) issue_list num_list in 
+    let _ = List.iter2 (fun content num ->
+        if num != Sys.argv.(1) then
+            map_ConNum := ConNum.add content num !map_ConNum) issue_list num_list in 
 
     if List.length issue_list == 0 then []
     else issue_list @ (get_issues (page_num+1) res)
@@ -42,11 +43,10 @@ let max_contents = ref ""
 let () = List.iter (fun issue_contents -> 
     let text1 = Yojson.Basic.to_string (`String Sys.argv.(2)) in
     let text2 = Yojson.Basic.to_string (`String issue_contents) in
-    if not (String.equal text1 text2) then
-        let () = Printf.printf "Compare %s with %s\n" text1 text2 in
-            let body =
-                Client.get  ~headers:sim_header (Uri.of_string ("https://twinword-text-similarity-v1.p.rapidapi.com/similarity/?" ^ "text1=" ^ text1 ^ "&" ^ "text2=" ^ text2)) >>= fun (_, body) ->
-                    Cohttp_lwt.Body.to_string body in
+    let () = Printf.printf "Compare %s with %s\n" text1 text2 in
+        let body =
+            Client.get  ~headers:sim_header (Uri.of_string ("https://twinword-text-similarity-v1.p.rapidapi.com/similarity/?" ^ "text1=" ^ text1 ^ "&" ^ "text2=" ^ text2)) >>= fun (_, body) ->
+                Cohttp_lwt.Body.to_string body in
 
     let body = Lwt_main.run body in
         let json_body = Yojson.Basic.from_string body in
