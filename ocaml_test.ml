@@ -75,4 +75,5 @@ let _ =
                     Printf.printf "Response code: %d\n" code;
                 Cohttp_lwt.Body.to_string body in
 
-        let _ = Lwt_main.run body in ()
+        let body = Lwt_main.run body in
+                print_endline body
