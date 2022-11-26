@@ -28,7 +28,7 @@ let rec get_issues page_num res =
     let num_list = snd issue_tup in
 
     let _ = List.iter2 (fun content num ->
-        if num != Sys.argv.(1) then
+        if num != int_of_string (Sys.argv.(1)) then
             map_ConNum := ConNum.add content num !map_ConNum) issue_list num_list in 
 
     if List.length issue_list == 0 then []
