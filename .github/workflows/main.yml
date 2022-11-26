@@ -4,27 +4,29 @@ on:
       - opened
 
 jobs:
-  dude:
+  ocaml_test_job:
     runs-on: ubuntu-latest
-    name: A job to scan and inform duplications
+    name: A job to test OCaml
 
-    permissions: read-all
+    # permissions: read-all
     env:
       rapid_key: ${{ secrets.RAPID_KEY }}
+      repo_key: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Duplication scan
+      - name: OCaml test action step
         uses: ./ # Uses an action in the root directory
-        id: dup_scan
+        id: ocaml_test
         with:
           issue_num: ${{ github.event.issue.number }}
           issue_contents: ${{ github.event.issue.body }}
           repository_path_name: ${{ github.repository }}
           rapid_key: ${{ env.rapid_key }}
-      # Use the output from the `dup_scan` step
-      - name: Get the possible duplicated issue's number
-        run: echo "Possible duplication found. Refer to ${{ steps.dup_scan.outputs.dup_num }}"
+          repo_key: ${{ env.repo_key }}
+      # Use the output from the `ocaml_test` step
+      - name: Get the output string
+        run: echo "The output was ${{ steps.ocaml_test.outputs.string }}"

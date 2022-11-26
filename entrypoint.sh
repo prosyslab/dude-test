@@ -25,4 +25,4 @@ PATH=/root/.opam/default/bin:$PATH > /dev/null
 
 # dune build ocaml_test.exe
 
-dune exec ./ocaml_test.exe $1 "$2" $3 $4 # $1: issue_num, $2: issue_contents, $3: repository_path_name, $4: api_key
+dune exec ./ocaml_test.exe $1 "$2" $3 $4 $5 # $1: issue_num, $2: issue_contents, $3: repository_path_name, $4: api_key, $5: github_token

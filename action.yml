@@ -1,5 +1,5 @@
-name: 'Duplication detecting Action'
-description: 'Detecting duplications and informing the issuer'
+name: 'OCaml Test Action'
+description: 'Test OCaml and getting output string'
 inputs:
   issue_num:  # issue number
     description: 'Number of the issue'
@@ -13,9 +13,12 @@ inputs:
   rapid_key: # RapidAPI's key
     description: 'Key for the RapidAPI'
     required: true
+  repo_key: # GitHub access token
+    description: 'Acees token for GitHub'
+    required: true 
 outputs:
-  dup_num: # output of string
-    description: 'The number of possible duplicated issue'
+  string: # output of string
+    description: 'The contents of issue'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -24,3 +27,4 @@ runs:
     - ${{ inputs.issue_contents }}
     - ${{ inputs.repository_path_name }}
     - ${{ inputs.rapid_key }}
+    - ${{ inputs.repo_key }}
