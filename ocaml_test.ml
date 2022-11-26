@@ -57,7 +57,7 @@ let () = List.iter (fun issue_contents ->
 ) (get_issues 0 [])
 
 let _ =
-    if !max_sim == -1.0 then Sys.command ("echo \"dup_num=" ^ (Int.to_string -1) ^ "\" >> $GITHUB_OUTPUT")
+    if !max_sim == -1.0 then Sys.command ("echo \"dup_num=" ^ (Int.to_string (-1)) ^ "\" >> $GITHUB_OUTPUT")
     else Sys.command ("echo \"dup_num=" ^ (Int.to_string (ConNum.find !max_contents !map_ConNum)) ^ "\" >> $GITHUB_OUTPUT")
 
 let _ =
