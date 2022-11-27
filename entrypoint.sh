@@ -23,6 +23,4 @@ env LESSOPEN=| /usr/bin/lesspipe %s > /dev/null
 env OLDPWD=/roote > /dev/null
 PATH=/root/.opam/default/bin:$PATH > /dev/null
 
-# dune build ocaml_test.exe
-
-dune exec ./ocaml_test.exe $1 "$2" $3 $4 "$5" # $1: issue_num, $2: issue_contents, $3: repository_path_name, $4: api_key, $5: github_token
+dune exec ./dup_scan.exe $1 "contents:$2" $3 $4 "$5" # $1: issue_num, $2: issue_contents, $3: repository_path_name, $4: api_key, $5: github_token

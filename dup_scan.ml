@@ -45,7 +45,7 @@ let max_sim = ref (-1.0)
 let max_contents = ref ""
 
 let () = List.iter (fun issue_contents -> 
-    let text1 = Yojson.Basic.to_string (`String Sys.argv.(2)) in
+    let text1 = Yojson.Basic.to_string (`String (String.sub (Sys.argv.(2)) 9 ((String.length (Sys.argv.(2))) - 9))) in
     let text2 = Yojson.Basic.to_string (`String issue_contents) in
     Printf.printf "Text1:%s\nText2:%s\n\n" text1 text2;
 
