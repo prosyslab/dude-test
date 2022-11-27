@@ -1,11 +1,11 @@
-name: 'OCaml Test Action'
-description: 'Test OCaml and getting output string'
+name: 'Duplication Detecting Action'
+description: 'Scan every existing issue and inform the issuer if any duplication detected'
 inputs:
   issue_num:  # issue number
-    description: 'Number of the issue'
+    description: 'Number of the new issue'
     required: true
   issue_contents: # issue contents
-    description: 'Contents of the issue'
+    description: 'Contents of the new issue'
     required: true
   repository_path_name: # repository name
     description: 'Path name of the repository'
@@ -17,8 +17,8 @@ inputs:
     description: 'Acees token for GitHub'
     required: true 
 outputs:
-  string: # output of string
-    description: 'The contents of issue'
+  dup_num: # possible duplicated issue's number
+    description: 'The number of detected issue'
 runs:
   using: 'docker'
   image: 'Dockerfile'
