@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to detect duplication among issues
 
-    # permissions: read-all
     env:
       rapid_key: ${{ secrets.RAPID_KEY }}
       repo_key: ${{ secrets.GITHUB_TOKEN }}

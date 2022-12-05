@@ -15,7 +15,12 @@ inputs:
     required: true
   repo_key: # GitHub access token
     description: 'Acees token for GitHub'
-    required: true 
+    required: true
+  threshold: # Threshold similarity
+    description: 'Threshold similarity to use for the detection'
+    default: "NaN"
+    required: false
+    type: number
 outputs:
   dup_num: # possible duplicated issue's number
     description: 'The number of detected issue'

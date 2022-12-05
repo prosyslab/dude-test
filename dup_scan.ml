@@ -40,7 +40,8 @@ let rec get_issues page_num res =
 
 let sim_header = Cohttp.Header.of_list [("X-RapidAPI-Key", Sys.argv.(4)); ("X-RapidAPI-Host", "twinword-text-similarity-v1.p.rapidapi.com"); ("content-type", "application/x-www-form-urlencoded")]
 
-let threshold_sim = 0.20
+let threshold_sim = if Option.is_some (float_of_string_opt (Sys.argv.(6))) then float_of_string_opt (Sys.argv.(6))
+    else 0.20
 let max_sim = ref (-1.0)
 let max_contents = ref ""
 
