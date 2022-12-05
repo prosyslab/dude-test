@@ -57,7 +57,7 @@ env:
 
 ...
 
-uses: actions/dude@v1.0.0 # not yet published!!   
+uses: actions/dude@v1.0.0 
 with:   
   issue_num: ${{ github.event.issue.number }}
   issue_contents: ${{ github.event.issue.body }}
@@ -65,3 +65,10 @@ with:
   rapid_key: ${{ env.rapid_key }}
   repo_key: ${{ env.repo_key }}
 ```
+
+## Plans for updates
+
+- There will be several convenience functions we are currently planning to supports:  
+  - Using tags, include & exclude some issues from scanning.  
+  - Set default threshold value by inital scanning.  
+  - Provide several options to scan & return.
